@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 export class TodoListComponent implements OnInit, OnDestroy{
   public todos: Array<ITodo> = [];
   private subscription: Subscription = new Subscription();
+  
   constructor(public todoService: TodoService) {
 
   }
@@ -23,11 +24,21 @@ export class TodoListComponent implements OnInit, OnDestroy{
   }
   
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-    
+    this.subscription.unsubscribe();  
+  }
+  
+  public onTodoClick(todo: ITodo, index: number){
+    this.todoService.setSelectedTodo(todo);
+    this.todos.forEach((todo)=>{
+      if(todo.selected)
+      {
+        todo.selected = false
+      }
+    })
+    this.todos[index].selected = true;
   }
 
-  
+ 
 }
 
 const temp = [{ title: "European badger", description: "Meles meles", isCompleted: false, isArchived: true, endDate: "9/10/2023" },
