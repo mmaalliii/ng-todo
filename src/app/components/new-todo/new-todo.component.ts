@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { Form } from '@angular/forms';
 
 @Component({
   selector: 'app-new-todo',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './new-todo.component.scss'
 })
 export class NewTodoComponent {
+  @ViewChild('f') form: Form;
+
+  public onNewTodoSubnit(): void{
+    console.log('on submit');
+    
+    console.log(this.form);
+    
+  } 
 
 }
