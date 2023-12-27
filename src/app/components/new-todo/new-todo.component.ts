@@ -14,6 +14,7 @@ import { v4 as uuidv4 } from 'uuid';
 export class NewTodoComponent {
   @ViewChild('f') form: NgForm;
 
+  public minData: Date = new Date();
   constructor(private todoService: TodoService, public dialog: MatDialog) { }
 
   public onNewTodoSubnit(): void {
@@ -31,6 +32,7 @@ export class NewTodoComponent {
       }
       this.dialog.closeAll();
       this.todoService.addNewTodo(newTodo);
+      
     }
 
   }

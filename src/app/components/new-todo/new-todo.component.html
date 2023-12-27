@@ -15,7 +15,7 @@
 
         <mat-form-field>
             <mat-label>Choose a Date</mat-label>
-            <input required="true" ngModel name="date" matInput [matDatepicker]="picker">
+            <input required="true" ngModel name="date" matInput [matDatepicker]="picker" [min]="minData">
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             <mat-error *ngIf="f.submitted && f.form.get('date')?.invalid">Date is Required</mat-error>
